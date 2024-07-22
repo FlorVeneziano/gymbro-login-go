@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  gymbro-login:
+    build: .
+    ports:
+      - "${PORT}:3030"
+    environment:
+      - LOCAL=${LOCAL}
+      - PEPPER=${PEPPER}
+      - ENV=${ENV}
+      - MONGO_HOST=${MONGO_HOST}
+      - MONGO_DATABASE=${MONGO_DATABASE}
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
