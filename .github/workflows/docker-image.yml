@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag gymbro-login:$(date +%s)
+      run: docker build . --file ../../src/Dockerfile --tag gymbro-login:$(date +%s)
