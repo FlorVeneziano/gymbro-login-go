@@ -9,7 +9,7 @@ import (
 func SetupRoutes(app *fiber.App) {
 
 	app.Get("/", func(c *fiber.Ctx) error { return c.SendString("Nothing to see here") })
-	app.Get("/healthz", func(c *fiber.Ctx) error { return c.SendString("OK") })
+	app.Get("/health", func(c *fiber.Ctx) error { return c.SendString("OK") })
 	// * Setup routes
 
 	app.Post("/login", routerLogin.Login)
