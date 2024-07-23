@@ -18,19 +18,33 @@ func Login(c *fiber.Ctx) error {
 
 	err := c.BodyParser(&req)
 	if err != nil {
-		return c.Status(fiber.StatusBadRequest).JSON(types.Response{
-			Success: false,
-			Code:    400,
-			Message: "Bad request",
+		return c.Status(fiber.StatusBadRequest).JSON(types.RequestResponse{
+			Response: types.Response{
+				Success: false,
+				Code:    400,
+				Message: "Bad request",
+			},
+			Data: err.Error(),
 		})
 	}
 
 	usr := users.NewUserProvider(c)
 
-	response := services.NewLoginService(usr).Login(req.Email, req.Password)
+	response, errLogin := services.NewLoginService(usr).Login(req.Email, req.Password)
+
+	if errLogin != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(types.RequestResponse{
+			Response: types.Response{
+				Success: false,
+				Code:    400,
+				Message: "Bad request",
+			},
+			Data: errLogin.Error(),
+		})
+	}
 
 	return c.JSON(loginSuccess{
-		Response: response,
-		Data:     "Login data",
+		Response: response.Response,
+		Data:     response.Data,
 	})
 }

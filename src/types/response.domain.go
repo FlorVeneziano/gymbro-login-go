@@ -6,7 +6,7 @@ type Response struct {
 	Message string `json:"message"`
 }
 
-type BadRequestResponse struct {
+type RequestResponse struct {
 	Response
 	Data string `json:"data"`
 }

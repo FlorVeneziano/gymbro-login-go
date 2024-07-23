@@ -14,8 +14,9 @@ func initializeEnvs() {
 
 		LOCAL: getEnvBool("LOCAL", false),
 
-		PEPPER: getEnv("PEPPER", "secret"),
-		ENV:    getEnv("ENV", "development"),
+		PEPPER:     getEnv("PEPPER", "secret"),
+		ENV:        getEnv("ENV", "development"),
+		JWT_SECRET: getEnv("JWT_SECRET", "secret"),
 
 		MONGO_HOST:     getEnv("MONGO_HOST", "mongodb://localhost:27017"),
 		MONGO_DATABASE: getEnv("MONGO_DATABASE", "example"),

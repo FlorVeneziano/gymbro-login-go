@@ -6,8 +6,9 @@ type env struct {
 	PORT  string
 	LOCAL bool
 
-	PEPPER string
-	ENV    string
+	PEPPER     string
+	ENV        string
+	JWT_SECRET string
 
 	MONGO_HOST     string
 	MONGO_DATABASE string
